@@ -1,4 +1,4 @@
-import userRoutes from "./Routes/userRoutes"
+import userRoutes from "./Routes/userRoutes.js"
 import cors from "cors"
 
 
