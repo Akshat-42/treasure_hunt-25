@@ -12,7 +12,7 @@ app.use(cors({
 
 // Homepage route
 app.get("/", (req, res) => {
-  console.log("Server is up i guess")
+  console.log("Server is up i guess api res check 4")
     res.send("Welcome to the Treasure Hunt API!");
 });
 
