@@ -1,20 +1,24 @@
 const express = require("express");
 const cors = require("cors");
-const userRoutes = require("./Routes/userRoutes.js");
+const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-app.use(cors());
-app.use(express.json());
+// CORS for local frontend
+app.use(cors({
+    origin: "http://localhost:5500",
+    credentials: true
+}));
 
-app.use("/api/users", userRoutes);
-
+// Homepage route
 app.get("/", (req, res) => {
-  res.send("Backend is working!");
+    res.send("Welcome to the Treasure Hunt API!");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`Server is Live i guess`);
+// Test API route
+app.get("/test", (req, res) => {
+    res.send("Hello from backend!");
 });
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
