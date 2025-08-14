@@ -8,7 +8,7 @@ document.getElementById("sendRequest").addEventListener("click", sendHomepageReq
 
 async function sendHomepageRequest() {
     try {
-        const response = await fetch("https://treasurehunt-25.onrender.com//", {
+        const response = await fetch("https://treasurehunt-25.onrender.com/", {
             method: "GET",
             credentials: "include" // in case backend sends cookies
         });
