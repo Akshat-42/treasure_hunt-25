@@ -1,7 +1,9 @@
+const backend_port="https://treasurehunt-25.onrender.com"
+
 document.getElementById("sendRequest").addEventListener("click", sendHomepageRequest);
 async function sendHomepageRequest() {
     try {
-        const response = await fetch("https://treasurehunt-25.onrender.com/", {
+        const response = await fetch(backend_port+"/", {
             method: "GET",
             credentials: "include" // in case backend sends cookies
         });
