@@ -34,7 +34,9 @@ function verify(username, password) {
 }
 
 // --- ROUTES ---
-
+app.get("/", (req, res) => {
+  res.send("Welcome! Backend is running successfully");
+});
 // Test route
 app.get("/test", (req, res) => {
   res.send("Hello from backend!");
