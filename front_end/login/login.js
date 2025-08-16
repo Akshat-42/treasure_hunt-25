@@ -24,6 +24,8 @@ async function sendHomepageRequest() {
     console.error("Error calling /test:", error);
   }
 }
+
+
 async function handleUsernameSubmit(event) {
   event.preventDefault();
 
@@ -35,7 +37,7 @@ async function handleUsernameSubmit(event) {
   }
 
   try {
-    const response = await fetch("https://your-backend-url.com/usernamePage", {
+    const response = await fetch(backend_port+"/usernamePage", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
