@@ -1,14 +1,27 @@
-const backend_port="https://treasurehunt-25.onrender.com"
+const backend_port="https://treasure-hunt-25.onrender.com"
 
 document.getElementById("sendRequest").addEventListener("click", sendHomepageRequest);
+
 async function sendHomepageRequest() {
-    try {
-      const response = await fetch(backend_port+"/test"); // backend URL
-      const data = await response.json();
-      console.log("Response from backend:", data.message);
-    } catch (error) {
-      console.error("Error calling /test:", error);
+  try {
+    const response = await fetch(backend_port+"/test", {
+      method: "GET",
+      credentials: "include", // <-- IMPORTANT if using cookies
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+      console.log("Response from backend:", response);
     }
+
+    const data = await response.json();
+    console.log("Response from backend:", data.message);
+  } catch (error) {
+    console.error("Error calling /test:", error);
+  }
 }
 
 const passwords = {
