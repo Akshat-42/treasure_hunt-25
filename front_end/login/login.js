@@ -1,6 +1,7 @@
 const backend_port="https://treasure-hunt-25.onrender.com"
 
 document.getElementById("sendRequest").addEventListener("click", sendHomepageRequest);
+document.getElementById("usernameSubmit").addEventListener("click", handleUsernameSubmit);
 
 async function sendHomepageRequest() {
   try {
@@ -23,12 +24,18 @@ async function sendHomepageRequest() {
     console.error("Error calling /test:", error);
   }
 }
+async function handleUsernameSubmit(event) {
+  event.preventDefault();
+  const teamId = document.getElementById('teamId').value.trim();
+  if (teamId) {
+    currentTeamId = teamId; // Store the team ID for later use
+    showMessageBox('Team ID saved. Proceed to the next step!');
+    setTimeout(() => showPage('password-page'), 1500);
+  } else {
+    showMessageBox('Please enter your Team ID.');
+  }
+}
 
-const passwords = {
-    login: 'pinwheel'
-};
-
-const messageBoxOverlay = document.getElementById('message-box-overlay');
 const messageBoxText = document.getElementById('message-box-text');
 const usernamePage = document.getElementById('username-page');
 const passwordPage = document.getElementById('password-page');
