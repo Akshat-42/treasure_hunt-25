@@ -1,0 +1,7 @@
+{
+    "rewrites":[
+        {"source":"/","destination":"/login/login.html"},
+        {"Source":"/round2","destination":"/round2/round2.html"},
+        {"source":"/","destination":"/round3/round3.html"}
+    ]
+}
