@@ -50,7 +50,7 @@ app.get("/test", (req, res) => {
 // Username Cookie send Route
 app.post("/usernamePage", (req, res) => {
   const { username } = req.body;
-
+  console.log("Received username:", username);
   if (!teams[username]) {
     return res.status(400).json({ message: "Invalid team username" });
   }
@@ -60,6 +60,7 @@ app.post("/usernamePage", (req, res) => {
             httpOnly: true,
             secure: true
         } 
+    console.log("cookie has been sent", username, teams[username]);
     return res
     .status(200)
     .cookie(`${username}_token`, teams[username], options)

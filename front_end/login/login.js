@@ -26,16 +26,38 @@ async function sendHomepageRequest() {
 }
 async function handleUsernameSubmit(event) {
   event.preventDefault();
-  const teamId = document.getElementById('teamId').value.trim();
-  if (teamId) {
-    currentTeamId = teamId; // Store the team ID for later use
-    showMessageBox('Team ID saved. Proceed to the next step!');
-    setTimeout(() => showPage('password-page'), 1500);
-  } else {
-    showMessageBox('Please enter your Team ID.');
+
+  const teamId = document.getElementById("teamId").value.trim();
+
+  if (!teamId) {
+    showMessageBox("Please enter your Team ID.");
+    return;
+  }
+
+  try {
+    const response = await fetch("https://your-backend-url.com/usernamePage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ username: teamId }),
+      credentials: "include"
+    });
+
+    const data = await response.json();
+    console.log("Response from backend:", data);
+
+    if (response.ok) {
+      showMessageBox("Team ID saved. Proceeding...");
+      setTimeout(() => showPage("password-page"), 1500);
+    } else {
+      showMessageBox("Invalid Team ID. Try again.");
+    }
+  } catch (error) {
+    console.error("Error contacting backend:", error);
+    showMessageBox("Could not reach server. Try later.");
   }
 }
-
 const messageBoxText = document.getElementById('message-box-text');
 const usernamePage = document.getElementById('username-page');
 const passwordPage = document.getElementById('password-page');
@@ -56,18 +78,7 @@ function showPage(pageId) {
     document.getElementById(pageId).style.display = 'block';
 }
 
-window.handleUsernameSubmit = function(event) {
-    event.preventDefault();
-    const teamId = document.getElementById('teamId').value.trim();
-    teamId_global = teamId;
-    if (teamId) {
-        currentTeamId = teamId;
-        showMessageBox('Team ID saved. Proceed to the next step!');
-        setTimeout(() => showPage('password-page'), 1500);
-    } else {
-        showMessageBox('Please enter your Team ID.');
-    }
-};
+
 
 window.handlePasswordSubmit = function(event) {
     event.preventDefault();
