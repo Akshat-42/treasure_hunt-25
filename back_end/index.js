@@ -10,8 +10,10 @@ const PORT = process.env.PORT || 5000;
 
 //CORS for local frontend
 app.use(cors({
-  origin: [`${process.env.FRONTEND_URL}`], // frontend URL
-  credentials: true
+  origin: "https://treasure-hunt-25-alpha.vercel.app",
+  credentials: true,  // needed for cookies
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 app.use(express.json());
@@ -35,7 +37,7 @@ function verify(username, password) {
 
 // --- ROUTES ---
 app.get("/", (req, res) => {
-  res.send("Welcome! Backend is running successfully");
+  res.send("Welcome! Backend is running successfully6");
 });
 // Test route
 app.get("/test", (req, res) => {
