@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
+const jwt = require("jsonwebtoken");
 dotenv.config();
 
 const app = express();
@@ -33,11 +34,14 @@ function verify(username, password) {
 }
 
 // --- ROUTES ---
-
+app.get("/", (req, res) => {
+  res.send("Welcome! Backend is running successfully");
+});
 // Test route
 app.get("/test", (req, res) => {
   res.send("Hello from backend!");
   console.log("test api response received");
+  res.json({ message: "API request has been written successfully!" });
 });
 
 // Username Cookie send Route
@@ -52,7 +56,7 @@ app.post("/usernamePage", (req, res) => {
   const options = {
             httpOnly: true,
             secure: true
-        }
+        } 
     return res
     .status(200)
     .cookie(`${username}_token`, teams[username], options)
