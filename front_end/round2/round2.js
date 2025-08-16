@@ -22,7 +22,7 @@ async function sendHomepageRequest() {
 }
 
 const passwords = {
-    round2: 'pinwheel-solution'
+    round2: 'georgesears'
 };
 
 const messageBoxOverlay = document.querySelector('.message-box-overlay');
