@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="container">
@@ -57,42 +57,6 @@
             </div>
         </div>
 
-        <!-- === ROUND 2 PAGE === -->
-        <div id="round-2-page" style="display: none;">
-            <h1 class="title">Round 2</h1>
-            <p>The Hidden Sound</p>
-            <div class="card">
-                <p class="riddle">
-                    The screen you see, holds a silent clue,<br>
-                    A hidden message, a sound for you.<br>
-                    Not in the light, where words are plain,<br>
-                    But in the shadows, where code does reign.<br>
-                    Seek its source, a path unseen,<br>
-                    To find the voice of this machine.
-                </p>
-                <form onsubmit="checkRound2Password(event)">
-                    <div class="input-group">
-                        <label for="puzzle-input" id="audio-clue-label">Password from the audio clue:</label>
-                        <input type="text" id="puzzle-input" placeholder="Enter the password">
-                    </div>
-                    <button type="submit" class="button">Submit</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- === ROUND 3 PAGE === -->
-        <div id="round-3-page" style="display: none;">
-            <h1 class="title">Round 3</h1>
-            <p>A Public Notice</p>
-            <div class="card">
-                <p class="riddle">
-                    Where voices of the campus often reside, and daily messages can't hide.<br>
-                    A silent train waits, its time displayed, with a string of numbers, a code is made.
-                </p>
-                <a href="gfjhsdjkgkdgdjhgfksdhgfjdg.py" download class="download-link">GeT ShIT</a>
-            </div>
-        </div>
-
     </div>
 
     <div id="message-box-overlay" class="message-box-overlay">
@@ -103,6 +67,6 @@
     </div>
 
     <!-- Link to external JS file -->
-    <script src="script.js"></script>
+    <script src="login.js"></script>
 </body>
 </html>

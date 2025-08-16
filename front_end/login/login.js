@@ -21,73 +21,62 @@ async function sendHomepageRequest() {
     }
 }
 
-// --- Game State & Passwords ---
-let currentTeamId = null;
 const passwords = {
-    login: 'pinwheel',
-    round2: 'pinwheel-solution'
+    login: 'pinwheel'
 };
 
-// --- UI Functions ---
-function showPage(pageId) {
-    const pages = ['username-page', 'password-page', 'round-2-page', 'round-3-page'];
-    pages.forEach(id => {
-        document.getElementById(id).style.display = 'none';
-    });
-    document.getElementById(pageId).style.display = 'block';
-}
+const messageBoxOverlay = document.getElementById('message-box-overlay');
+const messageBoxText = document.getElementById('message-box-text');
+const usernamePage = document.getElementById('username-page');
+const passwordPage = document.getElementById('password-page');
+let currentTeamId = null;
 
 function showMessageBox(message) {
-    document.getElementById('message-box-text').textContent = message;
-    document.getElementById('message-box-overlay').classList.add('visible');
+    messageBoxText.textContent = message;
+    messageBoxOverlay.classList.add('visible');
 }
 
 window.closeMessageBox = function() {
-    document.getElementById('message-box-overlay').classList.remove('visible');
+    messageBoxOverlay.classList.remove('visible');
 };
 
-// --- Game Logic ---
-function handleUsernameSubmit(event) {
+function showPage(pageId) {
+    usernamePage.style.display = 'none';
+    passwordPage.style.display = 'none';
+    document.getElementById(pageId).style.display = 'block';
+}
+
+window.handleUsernameSubmit = function(event) {
     event.preventDefault();
     const teamId = document.getElementById('teamId').value.trim();
+    teamId_global = teamId;
     if (teamId) {
-        currentTeamId = teamId; // Store the team ID for later use
+        currentTeamId = teamId;
         showMessageBox('Team ID saved. Proceed to the next step!');
         setTimeout(() => showPage('password-page'), 1500);
     } else {
         showMessageBox('Please enter your Team ID.');
     }
-}
+};
 
-function handlePasswordSubmit(event) {
+window.handlePasswordSubmit = function(event) {
     event.preventDefault();
     const passwordInput = document.getElementById('password').value.trim();
 
     if (passwordInput.toLowerCase() === passwords.login) {
         showMessageBox('Login successful! Welcome, ' + currentTeamId + '.');
-        setTimeout(() => showPage('round-2-page'), 1500);
+        setTimeout(() => {
+            // Redirect to the next round page
+            window.location.href = '../round2/round2.html';
+        }, 1500);
     } else {
         showMessageBox('Incorrect password. Try again!');
     }
-}
+};
 
-function checkRound2Password(event) {
-    event.preventDefault();
-    const input = document.getElementById('puzzle-input').value.trim().toLowerCase();
-    
-    if (input === passwords.round2) {
-        showMessageBox('Correct! You have solved the puzzle.');
-        // Here you would add logic to show the next round
-        setTimeout(() => showPage('round-3-page'), 1500);
-    } else {
-        showMessageBox('Incorrect password. Try again!');
-    }
-}
-
-// Add event listeners to forms
 window.onload = function() {
     showPage('username-page');
+    // Add event listeners for the forms once the page is loaded
     document.getElementById('username-page').querySelector('form').onsubmit = handleUsernameSubmit;
     document.getElementById('password-page').querySelector('form').onsubmit = handlePasswordSubmit;
-    document.getElementById('round-2-page').querySelector('form').onsubmit = checkRound2Password;
 };

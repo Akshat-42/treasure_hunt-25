@@ -2,7 +2,7 @@
     --color-dark: #0f0f0f;
     --color-pinkish-red: #ed1b76;
     --color-player-green: #00b894;
-    --color-light-grey: #bdbcbc;
+    --color-light-grey: #a0a0a0;
     --color-white: #ffffff;
 }
 
@@ -62,7 +62,6 @@ label {
     color: var(--color-light-grey);
 }
 
-/* Styling for the specific audio clue label */
 #audio-clue-label {
     color: var(--color-player-green);
 }
@@ -146,7 +145,6 @@ input:focus {
     transform: translateY(-2px);
 }
 
-/* Message Box */
 .message-box-overlay {
     position: fixed;
     top: 0;
@@ -183,7 +181,6 @@ input:focus {
     margin-bottom: 1.5rem;
 }
 
-/* Shapes */
 .shape-container {
     position: absolute;
     top: 1rem;
@@ -191,6 +188,7 @@ input:focus {
     display: flex;
     gap: 0.5rem;
 }
+
 .shape-container svg {
     width: 25px;
     height: 25px;
@@ -199,10 +197,11 @@ input:focus {
     fill: var(--color-player-green);
 }
 
-@media (max-width: 768px) {
+
+
+@media (max-width: 600px) {
     .container {
         padding: 1.5rem;
-        margin: 20px;
     }
     .title {
         font-size: 2rem;
@@ -210,5 +209,8 @@ input:focus {
     }
     .card {
         padding: 1rem;
+    }
+    .shape-container {
+        display: none;
     }
 }
