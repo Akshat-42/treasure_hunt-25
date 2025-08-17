@@ -30,6 +30,12 @@ const passwords = {
 async function checkRound2Password(event) {
     event.preventDefault();
     const input = document.getElementById('puzzle-input').value.trim();
+    if (input.toLowerCase() == passwords.assman) {
+        console.log('Correct! You have solved the puzzle.');
+        window.location.href = '../ASSMAN/ASSMAN.html';
+    } else {
+        console.log('Incorrect password. Try again!');
+    }
     const response = await fetch(backend_port+"/round2Password", {
         method: "POST",
         headers: {
@@ -45,10 +51,5 @@ async function checkRound2Password(event) {
         window.location.href = '../round3/round3.html';
 
     }
-    if (input.toLowerCase() == passwords.assman) {
-        console.log('Correct! You have solved the puzzle.');
-        window.location.href = '../ASSMAN/ASSMAN.html';
-    } else {
-        console.log('Incorrect password. Try again!');
-    }
+    
 }
