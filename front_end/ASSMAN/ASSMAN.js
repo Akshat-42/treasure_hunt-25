@@ -1,4 +1,6 @@
-const backend_port="https://treasurehunt-25.onrender.com"
+// const e = require("express");
+
+const backend_port="https://treasure-hunt-25.onrender.com"
 
 document.getElementById("sendRequest").addEventListener("click", sendHomepageRequest);
 async function sendHomepageRequest() {
@@ -21,10 +23,42 @@ async function sendHomepageRequest() {
     }
 }
 
-const passwords = {
-    round2: 'georgesears'
-};
 
+// Grid of emojis part
+const GRID_WIDTH = 50;
+const GRID_HEIGHT = 50;
+
+
+// A list of 5 emojis to create the combination
+const EMOJI_LIST = ['🍕', '🚀', '🎉', '🤖', '⭐'];
+
+// --- DOM ELEMENTS ---
+const gridElement = document.getElementById('emoji-grid');
+
+gp = new String();
+gridElement.textContent = "Loading...";
+
+const emojiCounts = new Map();
+EMOJI_LIST.forEach(emoji => emojiCounts.set(emoji, 0));
+
+let gridText = '';
+for (let y = 0; y < GRID_HEIGHT; y++) {
+    for (let x = 0; x < GRID_WIDTH; x++) {
+        const randomIndex = Math.floor(Math.random() * EMOJI_LIST.length);
+        const selectedEmoji = EMOJI_LIST[randomIndex];
+        
+        gridText += selectedEmoji;
+        
+        emojiCounts.set(selectedEmoji, emojiCounts.get(selectedEmoji) + 1);
+    }
+    gridText += '\n';
+}
+for (const[k,e] of emojiCounts)
+    {
+        gp += String(e);
+    }
+console.log(gp)
+gridElement.textContent = gridText;
 const messageBoxOverlay = document.querySelector('.message-box-overlay');
 const messageBoxText = document.querySelector('.message-box-text');
 
@@ -37,11 +71,11 @@ window.closeMessageBox = function() {
     messageBoxOverlay.classList.remove('visible');
 };
 
-window.checkRound2Password = function(event) {
+window.memeskirtskirt = function(event) {
     event.preventDefault();
     const input = document.getElementById('puzzle-input').value.trim();
 
-    if (input.toLowerCase() === passwords.round2) {
+    if (input.toLowerCase() === gp) {
         showMessageBox('Correct! You have solved the puzzle.');
         setTimeout(() => {
             window.location.href = '../DUMBASSES/Dumbass.html';
@@ -50,3 +84,4 @@ window.checkRound2Password = function(event) {
         showMessageBox('Incorrect password. Try again!');
     }
 };
+

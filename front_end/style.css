@@ -18,7 +18,7 @@ body {
     align-items: center;
     min-height: 100vh;
     text-align: center;
-    overflow: auto;
+    overflow-x: hidden;
 }
 
 .container {
@@ -199,7 +199,23 @@ input:focus {
     fill: var(--color-player-green);
 }
 
-
+#emoji-grid {
+            font-family: 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', Times, 'Times New Roman', serif;
+            line-height: 1.2;
+            font-size: 14px;
+            cursor: default;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            white-space: pre;
+            text-align: center;
+            overflow: visible;
+            letter-spacing: 2px; /* Adjust spacing between emojis */
+        }
+#emoji-container {
+            overflow-x: auto;
+        }
 
 @media (max-width: 600px) {
     .container {
