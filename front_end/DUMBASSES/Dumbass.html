@@ -128,8 +128,9 @@
         <div class="card">
             <p>bich what u think we stupid or what....thats not the password u dumb dumbs....go back to round two</p> 
         </div>
-
-        <button id="show-roll-number-prompt" class="button bottom-right-button">Answer this</button>
+        <!-- <form onsubmit="back_to_r2(event)"> -->
+        <button class="button" id="back-to-r2" onclick="back_to_r2()">Go Back To Round 2</button>
+        <!-- </form> -->
     </div>
 
     <div class="message-box-overlay">
@@ -139,20 +140,6 @@
         </div>
     </div>
 
-    <!-- New overlay for the roll number prompt -->
-    <div id="roll-no-prompt-overlay" class="roll-no-prompt-overlay">
-        <div class="roll-no-prompt-box">
-            <h2 class="title" style="font-size: 1.5rem; margin-bottom: 1rem;">Enter Roll No. of person telling the truth</h2>
-            <form onsubmit="handleRollNoSubmit(event)">
-                <div class="input-group">
-                    <input type="text" id="roll-no-input" placeholder="Enter roll number">
-                </div>
-                <button type="submit" class="button">Submit</button>
-            </form>
-            <button class="button" onclick="closeRollNoPrompt()" style="margin-top: 1rem;">Cancel</button>
-        </div>
-    </div>
-
-    <script src="round3.js"></script>
+    <script src="dumbass.js"></script>
 </body>
 </html>
