@@ -22,7 +22,8 @@ async function sendHomepageRequest() {
 }
 
 const passwords = {
-    round2: 'georgesears'
+    round2: 'georgesears',
+    assman: 'bigboss'
 };
 
 window.checkRound2Password = function(event) {
@@ -33,8 +34,21 @@ window.checkRound2Password = function(event) {
         console.log('Correct! You have solved the puzzle.');
         setTimeout(() => {
             window.location.href = '../round3/round3.html';
+<<<<<<< HEAD
+        }, 1500);  
+    }
+    else if(input.toLowerCase() === passwords.assman) {
+        showMessageBox('Correct! You have solved the puzzle.');
+        setTimeout(() => {
+            window.location.href = '../ASSMAN/ASSMAN.html';
+        }, 1500); 
+    }
+    else {
+        showMessageBox('Incorrect password. Try again!');
+=======
         }, 1500);
     } else {
         console.log('Incorrect password. Try again!');
+>>>>>>> 059dc88cb76bc7a41a0419628c15b90a83a36092
     }
 };
