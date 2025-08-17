@@ -84,7 +84,7 @@ async function handlePasswordSubmit(event) {
     }
 
     try {
-        const response = await fetch("https://your-backend-url.com/verifyPassword", {
+        const response = await fetch(backend_port+"/verifyPassword", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
