@@ -25,28 +25,16 @@ const passwords = {
     round2: 'georgesears'
 };
 
-const messageBoxOverlay = document.querySelector('.message-box-overlay');
-const messageBoxText = document.querySelector('.message-box-text');
-
-function showMessageBox(message) {
-    messageBoxText.textContent = message;
-    messageBoxOverlay.classList.add('visible');
-}
-
-window.closeMessageBox = function() {
-    messageBoxOverlay.classList.remove('visible');
-};
-
 window.checkRound2Password = function(event) {
     event.preventDefault();
     const input = document.getElementById('puzzle-input').value.trim();
 
     if (input.toLowerCase() === passwords.round2) {
-        showMessageBox('Correct! You have solved the puzzle.');
+        console.log('Correct! You have solved the puzzle.');
         setTimeout(() => {
             window.location.href = '../round3/round3.html';
         }, 1500);
     } else {
-        showMessageBox('Incorrect password. Try again!');
+        console.log('Incorrect password. Try again!');
     }
 };
