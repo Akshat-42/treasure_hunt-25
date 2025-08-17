@@ -12,10 +12,9 @@ async function sendHomepageRequest() {
         "Content-Type": "application/json"
       }
     });
-
     if (!response.ok) {
-      throw new Error("Network response was not ok");
       console.log("Response from backend:", response);
+      throw new Error("Network response was not ok");
     }
 
     const data = await response.json();
@@ -32,7 +31,7 @@ async function handleUsernameSubmit(event) {
   const teamId = document.getElementById("teamId").value.trim();
 
   if (!teamId) {
-    showMessageBox("Please enter your Team ID.");
+    console.log("Please enter your Team ID.");
     return;
   }
 
@@ -50,29 +49,22 @@ async function handleUsernameSubmit(event) {
     console.log("Response from backend:", data);
 
     if (response.ok) {
-      showMessageBox("Team ID saved. Proceeding...");
-      setTimeout(() => showPage("password-page"), 1500);
+      console.log("Team ID saved. Proceeding...");
+
+      setTimeout(() => showPage("password-page"), 1000);
+
     } else {
-      showMessageBox("Invalid Team ID. Try again.");
+      console.log("Invalid Team ID. Try again.");
     }
   } catch (error) {
     console.error("Error contacting backend:", error);
-    showMessageBox("Could not reach server. Try later.");
   }
 }
-const messageBoxText = document.getElementById('message-box-text');
+
 const usernamePage = document.getElementById('username-page');
 const passwordPage = document.getElementById('password-page');
 let currentTeamId = null;
 
-function showMessageBox(message) {
-    messageBoxText.textContent = message;
-    messageBoxOverlay.classList.add('visible');
-}
-
-window.closeMessageBox = function() {
-    messageBoxOverlay.classList.remove('visible');
-};
 
 function showPage(pageId) {
     usernamePage.style.display = 'none';
@@ -87,14 +79,14 @@ window.handlePasswordSubmit = function(event) {
     const passwordInput = document.getElementById('password').value.trim();
 
     if (passwordInput.toLowerCase() === passwords.login) {
-        showMessageBox('Login successful! Welcome, ' + currentTeamId + '.');
+        
         setTimeout(() => {
             // Redirect to the next round page
             window.location.href = '../round2/round2.html';
         }, 1500);
-    } else {
-        showMessageBox('Incorrect password. Try again!');
-    }
+      } else {
+          console.log('Incorrect password. Try again!');
+      }
 };
 
 window.onload = function() {
