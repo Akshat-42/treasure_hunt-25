@@ -25,18 +25,6 @@ const passwords = {
     round3: 'the-truth-roll-no' // This should be replaced with the actual roll number
 };
 
-const messageBoxOverlay = document.querySelector('.message-box-overlay');
-const messageBoxText = document.querySelector('.message-box-text');
-
-function showMessageBox(message) {
-    messageBoxText.textContent = message;
-    messageBoxOverlay.classList.add('visible');
-}
-
-window.closeMessageBox = function() {
-    messageBoxOverlay.classList.remove('visible');
-};
-
 document.getElementById('show-roll-number-prompt').addEventListener('click', () => {
     document.getElementById('roll-no-prompt-overlay').classList.add('visible');
 });
@@ -51,9 +39,9 @@ window.handleRollNoSubmit = function(event) {
     
     // Check the submitted roll number against the correct one
     if (rollNo === passwords.round3) {
-        showMessageBox('Correct! You have found the person telling the truth. You can now proceed to the next puzzle!');
+        console.log('Correct! You have found the person telling the truth. You can now proceed to the next puzzle!');
         closeRollNoPrompt();
     } else {
-        showMessageBox('Incorrect roll number.');
+        console.log('Incorrect roll number.');
     }
 };

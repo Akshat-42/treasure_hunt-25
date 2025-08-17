@@ -26,26 +26,15 @@ const passwords = {
     assman: 'bigboss'
 };
 
-const messageBoxOverlay = document.querySelector('.message-box-overlay');
-const messageBoxText = document.querySelector('.message-box-text');
-
-function showMessageBox(message) {
-    messageBoxText.textContent = message;
-    messageBoxOverlay.classList.add('visible');
-}
-
-window.closeMessageBox = function() {
-    messageBoxOverlay.classList.remove('visible');
-};
-
 window.checkRound2Password = function(event) {
     event.preventDefault();
     const input = document.getElementById('puzzle-input').value.trim();
 
     if (input.toLowerCase() === passwords.round2) {
-        showMessageBox('Correct! You have solved the puzzle.');
+        console.log('Correct! You have solved the puzzle.');
         setTimeout(() => {
             window.location.href = '../round3/round3.html';
+<<<<<<< HEAD
         }, 1500);  
     }
     else if(input.toLowerCase() === passwords.assman) {
@@ -56,5 +45,10 @@ window.checkRound2Password = function(event) {
     }
     else {
         showMessageBox('Incorrect password. Try again!');
+=======
+        }, 1500);
+    } else {
+        console.log('Incorrect password. Try again!');
+>>>>>>> 059dc88cb76bc7a41a0419628c15b90a83a36092
     }
 };

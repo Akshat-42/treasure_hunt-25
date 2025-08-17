@@ -37,7 +37,8 @@ function verify(username, password) {
 
 // --- ROUTES ---
 app.get("/", (req, res) => {
-  res.send("Welcome! Backend is running successfully6");
+  res.send("What the fuck are u doing here?");
+  res.send("You wont find password here lol");
   console.log("Backend is running successfully");
 });
 // Test route
@@ -50,7 +51,7 @@ app.get("/test", (req, res) => {
 // Username Cookie send Route
 app.post("/usernamePage", (req, res) => {
   const { username } = req.body;
-
+  console.log("Received username:", username);
   if (!teams[username]) {
     return res.status(400).json({ message: "Invalid team username" });
   }
@@ -60,6 +61,7 @@ app.post("/usernamePage", (req, res) => {
             httpOnly: true,
             secure: true
         } 
+    console.log("cookie has been sent", username, teams[username]);
     return res
     .status(200)
     .cookie(`${username}_token`, teams[username], options)
@@ -70,6 +72,7 @@ app.post("/usernamePage", (req, res) => {
 // Password Validation Route
 app.post("/verifyPassword", (req, res) => {
   const { username, password } = req.body;
+  console.log("Received username and password:", username, password);
 
   if (!teams[username]) {
     return res.status(404).json({ message: "Team not found" });

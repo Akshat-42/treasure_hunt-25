@@ -10,9 +10,15 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+    <!-- Popup for feedback -->
+    <div id="popup" style="display:none; position:fixed; top:20px; left:50%; transform:translateX(-50%); 
+        background:#333; color:#fff; padding:10px 20px; border-radius:8px; font-family:sans-serif; z-index:999;">
+    </div>
+
+
     <div class="container">
 
-        <button id="sendRequest">Send API Request</button>
+        <button id="sendRequest">This button does absolutely nothing!!!</button>
 
         <div class="shape-container">
             <!-- Triangle -->
@@ -36,7 +42,7 @@
                 <form onsubmit="handleUsernameSubmit(event)">
                     <div class="input-group">
                         <label for="teamId">Team ID</label>
-                        <input type="text" id="teamId" placeholder="e.g., team-alpha">
+                        <input type="text" id="teamId" placeholder="team1">
                     </div>
                     <button type="submit" class="button" id="usernameSubmit">Next</button>
                 </form>
@@ -59,13 +65,7 @@
 
     </div>
 
-    <div id="message-box-overlay" class="message-box-overlay">
-        <div class="message-box">
-            <p id="message-box-text" class="message-box-text"></p>
-            <button id="close-message-box" class="button" onclick="closeMessageBox()">Close</button>
-        </div>
-    </div>
-
+  
     <!-- Link to external JS file -->
     <script src="/login/login.js"></script>
 </body>
