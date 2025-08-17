@@ -29,7 +29,7 @@ const passwords = {
 
 async function checkRound2Password(event) {
     event.preventDefault();
-    let input = document.getElementById('puzzle-input').value.trim();
+    const input = document.getElementById('puzzle-input').value.trim();
     const response = await fetch(backend_port+"/round2Password", {
         method: "POST",
         headers: {
