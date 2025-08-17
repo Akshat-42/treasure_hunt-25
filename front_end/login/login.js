@@ -12,10 +12,9 @@ async function sendHomepageRequest() {
         "Content-Type": "application/json"
       }
     });
-
     if (!response.ok) {
-      throw new Error("Network response was not ok");
       console.log("Response from backend:", response);
+      throw new Error("Network response was not ok");
     }
 
     const data = await response.json();
@@ -51,7 +50,12 @@ async function handleUsernameSubmit(event) {
 
     if (response.ok) {
       showMessageBox("Team ID saved. Proceeding...");
+
       setTimeout(() => showPage("password-page"), 1500);
+      setTimeout(() => {
+        window.location.href = "/round2/round2.html"; 
+      }, 1500);
+
     } else {
       showMessageBox("Invalid Team ID. Try again.");
     }
