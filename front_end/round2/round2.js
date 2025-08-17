@@ -38,20 +38,16 @@ async function checkRound2Password(event) {
         body: JSON.stringify({ password: input })
     });
     if (response.ok) {
+        console.log("Frontend Response:", response);
         const data = await response.json();
-        if (data.message === "Password is valid!") {
-            console.log('Correct! You have solved the puzzle.');
-            window.location.href = '../round3/round3.html';
-            
-        }else{
-            console.log(data.message);
-        }
+
+        console.log('Correct! You have solved the puzzle.');
+        window.location.href = '../round3/round3.html';
+
     }
     else if (input.toLowerCase() == passwords.assman) {
         console.log('Correct! You have solved the puzzle.');
-        setTimeout(() => {
-            window.location.href = '../ASSMAN/ASSMAN.html';
-        }, 1500);
+        window.location.href = '../ASSMAN/ASSMAN.html';
     } else {
         console.log('Incorrect password. Try again!');
     }
