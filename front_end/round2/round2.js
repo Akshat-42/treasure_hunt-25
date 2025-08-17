@@ -44,15 +44,15 @@ async function checkRound2Password(event) {
             window.location.href = '../round3/round3.html';
             
         }else{
-            showMessageBox(data.message);
+            console.log(data.message);
         }
     }
     if (input.toLowerCase() === passwords.assman) {
-        showMessageBox('Correct! You have solved the puzzle.');
+        console.log('Correct! You have solved the puzzle.');
         setTimeout(() => {
             window.location.href = '../ASSMAN/ASSMAN.html';
         }, 1500);
     } else {
-        showMessageBox('Incorrect password. Try again!');
+        console.log('Incorrect password. Try again!');
     }
 }
