@@ -23,7 +23,6 @@ async function sendHomepageRequest() {
 }
 
 const passwords = {
-    // round2: 'georgesears',  TODO REMOVE THIS LINE
     assman: 'bigboss'
 };
 
