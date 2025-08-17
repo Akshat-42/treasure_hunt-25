@@ -71,7 +71,8 @@ app.post("/usernamePage", (req, res) => {
 // Password Validation Route
 app.post("/verifyPassword", (req, res) => {
   const { username, password } = req.body;
-
+  console.log("Received username and password:", username, password);
+  
   if (!teams[username]) {
     return res.status(404).json({ message: "Team not found" });
   }

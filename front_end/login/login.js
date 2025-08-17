@@ -2,6 +2,9 @@ const backend_port="https://treasure-hunt-25.onrender.com"
 
 document.getElementById("sendRequest").addEventListener("click", sendHomepageRequest);
 document.getElementById("usernameSubmit").addEventListener("click", handleUsernameSubmit);
+const usernamePage = document.getElementById('username-page');
+const passwordPage = document.getElementById('password-page');
+let currentTeamId = null;
 
 async function sendHomepageRequest() {
   try {
@@ -23,7 +26,6 @@ async function sendHomepageRequest() {
     console.error("Error calling /test:", error);
   }
 }
-
 
 async function handleUsernameSubmit(event) {
   event.preventDefault();
@@ -61,9 +63,6 @@ async function handleUsernameSubmit(event) {
   }
 }
 
-const usernamePage = document.getElementById('username-page');
-const passwordPage = document.getElementById('password-page');
-let currentTeamId = null;
 
 
 function showPage(pageId) {
@@ -72,22 +71,44 @@ function showPage(pageId) {
     document.getElementById(pageId).style.display = 'block';
 }
 
-
-
-window.handlePasswordSubmit = function(event) {
+window.handlePasswordSubmit = async function(event) {
     event.preventDefault();
-    const passwordInput = document.getElementById('password').value.trim();
 
-    if (passwordInput.toLowerCase() === passwords.login) {
-        
-        setTimeout(() => {
-            // Redirect to the next round page
-            window.location.href = '../round2/round2.html';
-        }, 1500);
-      } else {
-          console.log('Incorrect password. Try again!');
-      }
+    const passwordInput = document.getElementById('password').value.trim();
+    const username = document.getElementById('teamId')?.value.trim() || window.currentTeamId; 
+    // teamId from input OR a stored variable
+
+    if (!username || !passwordInput) {
+        console.log("Username or password missing");
+        return;
+    }
+
+    try {
+        const response = await fetch("https://your-backend-url.com/verifyPassword", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include", // include cookies
+            body: JSON.stringify({ username, password: passwordInput }),
+        });
+
+        const data = await response.json();
+        console.log("Response from backend:", data);
+
+        if (response.ok) {
+            console.log("Password verified. Redirecting...");
+            setTimeout(() => {
+                window.location.href = "../round2/round2.html";
+            }, 1500);
+        } else {
+            console.log(data.message || "Incorrect password. Try again!");
+        }
+    } catch (error) {
+        console.error("Error contacting backend:", error);
+    }
 };
+
 
 window.onload = function() {
     showPage('username-page');
