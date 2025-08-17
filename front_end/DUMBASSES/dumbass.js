@@ -22,8 +22,7 @@ async function sendHomepageRequest() {
 }
 
 const passwords = {
-    round2: 'georgesears',
-    assman: 'bigboss'
+    round3: '19263340' // This should be replaced with the actual roll number
 };
 
 const messageBoxOverlay = document.querySelector('.message-box-overlay');
@@ -38,23 +37,23 @@ window.closeMessageBox = function() {
     messageBoxOverlay.classList.remove('visible');
 };
 
-window.checkRound2Password = function(event) {
-    event.preventDefault();
-    const input = document.getElementById('puzzle-input').value.trim();
+document.getElementById('show-roll-number-prompt').addEventListener('click', () => {
+    document.getElementById('roll-no-prompt-overlay').classList.add('visible');
+});
 
-    if (input.toLowerCase() === passwords.round2) {
-        showMessageBox('Correct! You have solved the puzzle.');
-        setTimeout(() => {
-            window.location.href = '../round3/round3.html';
-        }, 1500);  
-    }
-    else if(input.toLowerCase() === passwords.assman) {
-        showMessageBox('Correct! You have solved the puzzle.');
-        setTimeout(() => {
-            window.location.href = '../ASSMAN/ASSMAN.html';
-        }, 1500); 
-    }
-    else {
-        showMessageBox('Incorrect password. Try again!');
+window.closeRollNoPrompt = function() {
+    document.getElementById('roll-no-prompt-overlay').classList.remove('visible');
+};
+
+window.handleRollNoSubmit = function(event) {
+    event.preventDefault();
+    const rollNo = document.getElementById('roll-no-input').value.trim();
+    
+    // Check the submitted roll number against the correct one
+    if (rollNo === passwords.round3) {
+        showMessageBox('Correct! You have found the person telling the truth. You can now proceed to the next puzzle!');
+        closeRollNoPrompt();
+    } else {
+        showMessageBox('Incorrect roll number.');
     }
 };
