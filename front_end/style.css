@@ -22,8 +22,8 @@ body {
 }
 
 .container {
-    width: 90%;
-    max-width: 600px;
+    width: 80%;
+    max-width: 56rem;
     padding: 2rem;
     background-color: #1a1a1a;
     border-radius: 1rem;
@@ -200,24 +200,153 @@ input:focus {
 }
 
 #emoji-grid {
-            font-family: 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', Times, 'Times New Roman', serif;
-            line-height: 1.2;
-            font-size: 14px;
-            cursor: default;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            white-space: pre;
-            text-align: center;
-            overflow: visible;
-            letter-spacing: 2px; /* Adjust spacing between emojis */
-        }
+    font-family: 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', Times, 'Times New Roman', serif;
+    line-height: 1.2;
+    font-size: 14px;
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    white-space: pre;
+    text-align: center;
+    overflow: visible;
+    letter-spacing: 2px; /* Adjust spacing between emojis */
+}
 #emoji-container {
-            overflow-x: auto;
-        }
+    overflow-x: auto;
+}
 
-@media (max-width: 600px) {
+/* --- Canvas & Status Text --- */
+.canvas-container {
+    position: relative;
+}
+
+canvas {
+    background-color: #abc9eb; /* Restored light blue sky */
+    border-radius: 0.5rem;
+    cursor: crosshair;
+    display: block;
+    width: 100%;
+    border: 3px solid var(--color-pinkish-red);
+}
+
+#statusText {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    height: 2rem; /* Reserve space to prevent layout shift */
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- Control Panel --- */
+.control-panel {
+    background-color: #1a1a1a;
+    border-radius: 0.75rem;
+    /* box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); */
+    padding: 1.5rem;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.inputs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-pinkish-red);
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+input[type="number"] {
+    width: 5rem;
+    padding: 0.5rem;
+    border: 1px solid var(--color-player-green);
+    border-radius: 0.375rem;
+    text-align: center;
+}
+input[type="number"]:focus {
+    outline: none;
+    border-color: var(--color-player-green);
+    box-shadow: 0 0 0 2px #bfdbfe;
+}
+
+/* --- Slider Styling --- */
+input[type="range"] {
+    width: 100%;
+    height: 0.5rem;
+    background: #dbeafe;
+    border-radius: 0.5rem;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--color-player-green);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px #93c5fd;
+}
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--color-player-green);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px #93c5fd;
+}
+
+/* --- Button Styling --- */
+#launchButton {
+    width: 100%;
+    background-color: var(--color-pinkish-red);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+#launchButton:hover {
+    background-color: #2563eb;
+}
+#launchButton:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #93c5fd;
+}
+#launchButton:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
     .container {
         padding: 1.5rem;
     }
@@ -230,5 +359,8 @@ input:focus {
     }
     .shape-container {
         display: none;
+    }
+    .control-panel {
+        grid-template-columns: 1fr;
     }
 }
