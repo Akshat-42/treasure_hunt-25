@@ -47,7 +47,7 @@ async function checkRound2Password(event) {
             console.log(data.message);
         }
     }
-    if (input.toLowerCase() === passwords.assman) {
+    else if (input.toLowerCase() == passwords.assman) {
         console.log('Correct! You have solved the puzzle.');
         setTimeout(() => {
             window.location.href = '../ASSMAN/ASSMAN.html';
