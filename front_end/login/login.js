@@ -52,8 +52,8 @@ async function handleUsernameSubmit(event) {
 
     if (response.ok) {
       console.log("Team ID saved. Proceeding...");
-
-      setTimeout(() => showPage("password-page"), 1000);
+      showPopup("Team ID saved. Proceeding to password page.", true);
+      showPage("password-page");
 
     } else {
       console.log("Invalid Team ID. Try again.");
@@ -63,56 +63,66 @@ async function handleUsernameSubmit(event) {
   }
 }
 
-
-
-function showPage(pageId) {
-    usernamePage.style.display = 'none';
-    passwordPage.style.display = 'none';
-    document.getElementById(pageId).style.display = 'block';
-}
-
 async function handlePasswordSubmit(event) {
-    event.preventDefault();
-
-    const passwordInput = document.getElementById('password').value.trim();
-    const username = document.getElementById('teamId')?.value.trim() || window.currentTeamId; 
-    // teamId from input OR a stored variable
-
-    if (!username || !passwordInput) {
-        console.log("Username or password missing");
+  event.preventDefault();
+  
+  const passwordInput = document.getElementById('password').value.trim();
+  const username = document.getElementById('teamId')?.value.trim() || window.currentTeamId; 
+  // teamId from input OR a stored variable
+  
+  if (!username || !passwordInput) {
+    console.log("Username or password missing");
         return;
     }
-
+    
     try {
         const response = await fetch(backend_port+"/verifyPassword", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+              "Content-Type": "application/json"
             },
             credentials: "include", // include cookies
             body: JSON.stringify({ username, password: passwordInput }),
-        });
-
-        const data = await response.json();
-        console.log("Response from backend:", data);
-
-        if (response.ok) {
+          });
+          
+          const data = await response.json();
+          console.log("Response from backend:", data);
+          
+          if (response.ok) {
+            showPopup("Correct password", true);
             console.log("Password verified. Redirecting...");
-            setTimeout(() => {
-                window.location.href = "../round2/round2.html";
-            }, 1500);
-        } else {
+            await (window.location.href = "../round2/round2.html");
+          } else {
+            showPopup("Incorrect password. Try again!", false);
             console.log(data.message || "Incorrect password. Try again!");
+          }
+        } catch (error) {
+          console.error("Error contacting backend:", error);
         }
-    } catch (error) {
-        console.error("Error contacting backend:", error);
-    }
-};
-
+      };
 
 window.onload = function() {
-    showPage('username-page');
-    // Add event listeners for the forms once the page is loaded
-    document.getElementById('username-page').querySelector('form').onsubmit = handleUsernameSubmit;
-    document.getElementById('password-page').querySelector('form').onsubmit = handlePasswordSubmit;
+  showPage('username-page');
+  // Add event listeners for the forms once the page is loaded
+  document.getElementById('username-page').querySelector('form').onsubmit = handleUsernameSubmit;
+  document.getElementById('password-page').querySelector('form').onsubmit = handlePasswordSubmit;
 };
+      
+function showPopup(message, success = false) {
+  const popup = document.getElementById("popup");
+  popup.textContent = message;
+  popup.style.background = success ? "green" : "red";
+  popup.style.display = "block";
+
+  setTimeout(() => {
+  popup.style.display = "none";
+  }, 2000); // auto hide after 2 sec
+}
+function showPage(pageId) {
+  const usernamePage = document.getElementById('username-page');
+  const passwordPage = document.getElementById('password-page');
+
+  usernamePage.style.display = 'none';
+  passwordPage.style.display = 'none';
+  document.getElementById(pageId).style.display = 'block';
+}

@@ -37,7 +37,8 @@ function verify(username, password) {
 
 // --- ROUTES ---
 app.get("/", (req, res) => {
-  res.send("Welcome! Backend is running successfully6");
+  res.send("What the fuck are u doing here?");
+  res.send("You wont find password here lol");
   console.log("Backend is running successfully");
 });
 // Test route
@@ -72,7 +73,7 @@ app.post("/usernamePage", (req, res) => {
 app.post("/verifyPassword", (req, res) => {
   const { username, password } = req.body;
   console.log("Received username and password:", username, password);
-  
+
   if (!teams[username]) {
     return res.status(404).json({ message: "Team not found" });
   }
