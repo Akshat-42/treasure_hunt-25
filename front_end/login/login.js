@@ -71,7 +71,7 @@ function showPage(pageId) {
     document.getElementById(pageId).style.display = 'block';
 }
 
-window.handlePasswordSubmit = async function(event) {
+async function handlePasswordSubmit(event) {
     event.preventDefault();
 
     const passwordInput = document.getElementById('password').value.trim();
