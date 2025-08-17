@@ -29,7 +29,7 @@ const teams = {
   team6: "p6",
   team7: "p7"
 };
-
+const round2Password = "georgesears";
 //helper function
 function verify(username, password) {
   return teams[username] && teams[username] === password;
@@ -41,6 +41,7 @@ app.get("/", (req, res) => {
   res.send("You wont find password here lol");
   console.log("Backend is running successfully");
 });
+
 // Test route
 app.get("/test", (req, res) => {
 //   res.send("Hello from backend!");
@@ -79,6 +80,17 @@ app.post("/verifyPassword", (req, res) => {
   }
 
   if (verify(username, password)) {
+    res.json({ message: "Password is valid!" });
+  } else {
+    res.status(401).json({ message: "Invalid password" });
+  }
+});
+
+app.post("/round2Password", (req, res) => {
+  const { password } = req.body;
+  console.log("Received password for round 2:", password);
+
+  if (password === round2Password) {
     res.json({ message: "Password is valid!" });
   } else {
     res.status(401).json({ message: "Invalid password" });

@@ -1,6 +1,9 @@
+const { response } = require("express");
+
 const backend_port="https://treasurehunt-25.onrender.com"
 
 document.getElementById("sendRequest").addEventListener("click", sendHomepageRequest);
+document.getElementById("round2-submit").addEventListener("click", checkRound2Password);
 async function sendHomepageRequest() {
     try {
         const response = await fetch(backend_port+"/", {
@@ -22,33 +25,59 @@ async function sendHomepageRequest() {
 }
 
 const passwords = {
-    round2: 'georgesears',
+    // round2: 'georgesears',  TODO REMOVE THIS LINE
     assman: 'bigboss'
 };
 
-window.checkRound2Password = function(event) {
+// window.checkRound2Password = function(event) {
+//     event.preventDefault();
+//     const input = document.getElementById('puzzle-input').value.trim();
+
+//     if (input.toLowerCase() === passwords.round2) {
+//         console.log('Correct! You have solved the puzzle.');
+//         setTimeout(() => {
+//             window.location.href = '../round3/round3.html';
+//         }, 1500);  
+//     }
+
+
+//     if(input.toLowerCase() === passwords.assman) {
+//         showMessageBox('Correct! You have solved the puzzle.');
+//         setTimeout(() => {
+//             window.location.href = '../ASSMAN/ASSMAN.html';
+//         }, 1500); 
+//     }
+//     else {
+//         showMessageBox('Incorrect password. Try again!');
+//     }
+// };
+
+async function checkRound2Password(event) {
     event.preventDefault();
     const input = document.getElementById('puzzle-input').value.trim();
-
-    if (input.toLowerCase() === passwords.round2) {
-        console.log('Correct! You have solved the puzzle.');
-        setTimeout(() => {
+    const response = await fetch(backend_port+"/round2Password", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ password: input })
+    });
+    if (response.ok) {
+        const data = await response.json();
+        if (data.message === "Password is valid!") {
+            console.log('Correct! You have solved the puzzle.');
             window.location.href = '../round3/round3.html';
-<<<<<<< HEAD
-        }, 1500);  
+            
+        }else{
+            showMessageBox(data.message);
+        }
     }
-    else if(input.toLowerCase() === passwords.assman) {
+    if (input.toLowerCase() === passwords.assman) {
         showMessageBox('Correct! You have solved the puzzle.');
         setTimeout(() => {
             window.location.href = '../ASSMAN/ASSMAN.html';
-        }, 1500); 
-    }
-    else {
-        showMessageBox('Incorrect password. Try again!');
-=======
         }, 1500);
     } else {
-        console.log('Incorrect password. Try again!');
->>>>>>> 059dc88cb76bc7a41a0419628c15b90a83a36092
+        showMessageBox('Incorrect password. Try again!');
     }
-};
+}
