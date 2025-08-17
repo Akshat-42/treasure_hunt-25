@@ -92,8 +92,6 @@ app.post("/round2Password", (req, res) => {
 
   if (password === round2Password) {
     res.json({ message: "Password is valid!" });
-  } else {
-    res.status(401).json({ message: "Invalid password" });
   }
 });
 
