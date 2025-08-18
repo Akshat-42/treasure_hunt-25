@@ -38,10 +38,23 @@ function verify(username, password) {
 
 // --- ROUTES ---
 app.get("/", (req, res) => {
-  res.send("What the fuck are u doing here?");
-  res.send("You wont find password here lol");
+  res.send(`
+    <h1 style="font-family: monospace; color: lime;">
+      What the fuck are you doing here?
+    </h1>
+    <p style="font-size: 18px;">
+      You really thought the password would just be lying around in the backend?
+    </p>
+    <p>Go solve the actual treasure hunt, hacker man</p>
+    <pre>
+      404: Secrets Not Found
+      200: Your curiosity is noted
+    </pre>
+  `);
+
   console.log("Backend is running successfully");
 });
+
 
 // Test route
 app.get("/test", (req, res) => {
