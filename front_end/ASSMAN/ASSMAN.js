@@ -77,9 +77,7 @@ window.memeskirtskirt = function(event) {
 
     if (input.toLowerCase() === gp) {
         showMessageBox('Correct! You have solved the puzzle.');
-        setTimeout(() => {
-            window.location.href = '../DUMBASSES/Dumbass.html';
-        }, 1500);
+        window.location.href = '../DUMBASSES/Dumbass.html';
     } else {
         showMessageBox('Incorrect password. Try again!');
     }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combination Clock - Squid Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <button id="sendRequest">This button does absolutely nothing!!!</button>
+
+        <h1 id="title">COMBINATION</h1>
+        <p>CLOCK</p>
+
+        <div id="lights-container">
+            <div class="indicator-bg"><svg width="24" height="24" viewBox="0 0 24 24"><circle class="indicator-shape" cx="12" cy="12" r="10"/></svg></div>
+            <div class="indicator-bg"><svg width="24" height="24" viewBox="0 0 24 24"><polygon class="indicator-shape" points="12,2 22,20 2,20"/></svg></div>
+            <div class="indicator-bg"><svg width="24" height="24" viewBox="0 0 24 24"><rect class="indicator-shape" x="3" y="3" width="18" height="18"/></svg></div>
+            <div class="indicator-bg"><svg width="24" height="24" viewBox="0 0 24 24"><circle class="indicator-shape" cx="12" cy="12" r="10"/></svg></div>
+            <div class="indicator-bg"><svg width="24" height="24" viewBox="0 0 24 24"><path class="indicator-shape" d="M4,12 A8,8,0,0,1,20,12 L13,12 L13,20 A1,1,0,1,1,11,20 L11,12 L4,12 Z"/></svg></div>
+        </div>
+
+        <div class="clock-container">
+            <svg id="clock" width="220" height="220" viewBox="0 0 220 220">
+                <circle class="clock-face" cx="110" cy="110" r="105"/>
+                <g id="clock-markings"></g>
+                <line id="hour-hand" class="clock-hand hour-hand" x1="110" y1="110" x2="110" y2="65"/>
+                <line id="minute-hand" class="clock-hand minute-hand" x1="110" y1="110" x2="110" y2="35"/>
+                <circle class="center-dot" cx="110" cy="110" r="6"/>
+            </svg>
+        </div>
+
+        <button id="submit-btn" class="submit-btn">SUBMIT</button>
+        <button id="reset-btn" class="reset-btn">RESET</button>
+
+        <div id="message-box" class="message-box"></div>
+    </div>
+
+    <script src="clock.js"></script>
+</body>
+</html>
