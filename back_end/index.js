@@ -39,22 +39,56 @@ function verify(username, password) {
 // --- ROUTES ---
 app.get("/", (req, res) => {
   res.send(`
-    <h1 style="font-family: monospace; color: lime;">
-      What the fuck are you doing here?
-    </h1>
-    <p style="font-size: 18px;">
-      You really thought the password would just be lying around in the backend?
-    </p>
-    <p>Go solve the actual treasure hunt, hacker man</p>
-    <pre>
-      404: Secrets Not Found
-      200: Your curiosity is noted
-    </pre>
+    <html>
+      <head>
+        <title>Access Denied</title>
+        <style>
+          body {
+            background-color: black;
+            color: limegreen;
+            font-family: "Courier New", monospace;
+            text-align: center;
+            padding: 50px;
+          }
+          h1 {
+            font-size: 40px;
+            text-shadow: 0 0 10px limegreen, 0 0 20px limegreen;
+          }
+          p {
+            font-size: 20px;
+            margin: 15px 0;
+          }
+          pre {
+            background: rgba(0, 255, 0, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            display: inline-block;
+            text-align: left;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+          }
+          .blink {
+            animation: blink 1s infinite;
+          }
+          @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+          }
+        </style>
+      </head>
+      <body>
+        <h1>ACCESS DENIED</h1>
+        <p class="blink">What the fuck are you doing here?</p>
+        <p>You really thought the password would just be lying around in the backend?</p>
+        <p>Go solve the actual treasure hunt, hacker man.</p>
+        <pre>
+  404: Secrets Not Found
+  200: Your curiosity is noted
+        </pre>
+      </body>
+    </html>
   `);
-
-  console.log("Backend is running successfully");
 });
-
 
 // Test route
 app.get("/test", (req, res) => {
