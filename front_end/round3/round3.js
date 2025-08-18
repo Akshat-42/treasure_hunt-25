@@ -1,29 +1,4 @@
-const backend_port="https://treasurehunt-25.onrender.com"
-
-document.getElementById("sendRequest").addEventListener("click", sendHomepageRequest);
-async function sendHomepageRequest() {
-    try {
-        const response = await fetch(backend_port+"/", {
-            method: "GET",
-            credentials: "include" // in case backend sends cookies
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.text();
-        console.log("Backend Response:", data);
-        alert("Server says: " + data);
-    } catch (err) {
-        console.error("Error fetching data:", err);
-        alert("Failed to fetch data from backend. Check console for details.");
-    }
-}
-
-const passwords = {
-    round3: 'the-truth-roll-no' // This should be replaced with the actual roll number
-};
+const backend_port="https://treasure-hunt-25.onrender.com"
 
 document.getElementById('show-roll-number-prompt').addEventListener('click', () => {
     document.getElementById('roll-no-prompt-overlay').classList.add('visible');
@@ -33,15 +8,29 @@ window.closeRollNoPrompt = function() {
     document.getElementById('roll-no-prompt-overlay').classList.remove('visible');
 };
 
-window.handleRollNoSubmit = function(event) {
+document.getElementById('roll-no-submit').addEventListener('click', handleRollNoSubmit);
+
+async function handleRollNoSubmit(event) {
     event.preventDefault();
     const rollNo = document.getElementById('roll-no-input').value.trim();
-    
-    // Check the submitted roll number against the correct one
-    if (rollNo === passwords.round3) {
-        console.log('Correct! You have found the person telling the truth. You can now proceed to the next puzzle!');
-        closeRollNoPrompt();
-    } else {
-        console.log('Incorrect roll number.');
+    const response = await fetch(backend_port + "/round3Password", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ password: rollNo })
+    });
+    if(response.ok) {
+        console.log("Frontend Response:", response);
+        const data = await response.json();
+
+        if (data.message === "Password is valid!") {
+            console.log('Correct! You have found the person telling the truth. You can now proceed to the next puzzle!');
+            closeRollNoPrompt();
+            window.location.href = '../nextPuzzle/nextPuzzle.html'; // Redirect to the next puzzle
+        } else {
+            console.log('Incorrect roll number.');
+        }
     }
+    
 };
