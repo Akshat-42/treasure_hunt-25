@@ -31,7 +31,7 @@ const teams = {
 };
 
 const round2Password = "georgesears";
-const round3Password = "the-truth-roll-no"; // TODO This should be replaced with the actual roll number
+const round3Password = "420"; // TODO This should be replaced with the actual roll number
 
 //helper function
 function verify(username, password) {

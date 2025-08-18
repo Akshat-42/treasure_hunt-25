@@ -27,7 +27,7 @@ async function handleRollNoSubmit(event) {
         if (data.message === "Password is valid!") {
             console.log('Correct! You have found the person telling the truth. You can now proceed to the next puzzle!');
             closeRollNoPrompt();
-            window.location.href = '../nextPuzzle/nextPuzzle.html'; // Redirect to the next puzzle
+            window.location.href = '../projectile/projectile.html'; // Redirect to the next puzzle
         } else {
             console.log('Incorrect roll number.');
         }
