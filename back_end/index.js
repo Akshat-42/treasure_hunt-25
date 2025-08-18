@@ -77,10 +77,11 @@ app.get("/", (req, res) => {
         </style>
       </head>
       <body>
-        <h1>ACCESS DENIED</h1>
-        <p class="blink">What the fuck are you doing here?</p>
+        <h1>LOL Nigga thought he Smort</h1>
+        <p class="blink">DA FUCK ARE U DOIN HERE EH?</p>
         <p>You really thought the password would just be lying around in the backend?</p>
         <p>Go solve the actual treasure hunt, hacker man.</p>
+        <p>HOES MADD</p>
         <pre>
   404: Secrets Not Found
   200: Your curiosity is noted
