@@ -30,6 +30,7 @@ const teams = {
   team7: "p7"
 };
 const round2Password = "georgesears";
+const round3Password = "the-truth-roll-no"; // This should be replaced with the actual roll number
 //helper function
 function verify(username, password) {
   return teams[username] && teams[username] === password;
@@ -70,7 +71,7 @@ app.post("/usernamePage", (req, res) => {
 
 });
 
-// Password Validation Route
+// Round 1 Password Validation Route
 app.post("/verifyPassword", (req, res) => {
   const { username, password } = req.body;
   console.log("Received username and password:", username, password);
@@ -86,12 +87,24 @@ app.post("/verifyPassword", (req, res) => {
   }
 });
 
+// Round 2 Password Validation Route
 app.post("/round2Password", (req, res) => {
   const { password } = req.body;
   console.log("Received password for round 2:", password);
 
   if (password === round2Password) {
     res.json({ message: "Password is valid!" });
+  }
+});
+
+app.post("/round3Password", (req, res) => {
+  const { password } = req.body;
+  console.log("Received password for round 3:", password);
+
+  if (password === round3Password) {
+    res.json({ message: "Password is valid!" });
+  } else {
+    res.status(401).json({ message: "Invalid password" });
   }
 });
 

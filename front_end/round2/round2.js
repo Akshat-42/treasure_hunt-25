@@ -22,14 +22,12 @@ async function sendHomepageRequest() {
     }
 }
 
-const passwords = {
-    assman: 'bigboss'
-};
+const PASSWORD = 'bigboss';
 
 async function checkRound2Password(event) {
     event.preventDefault();
     const input = document.getElementById('puzzle-input').value.trim();
-    if (input.toLowerCase() == passwords.assman) {
+    if (input.toLowerCase() == PASSWORD) {
         console.log('Correct! You have solved the puzzle.');
         window.location.href = '../ASSMAN/ASSMAN.html';
     } else {
