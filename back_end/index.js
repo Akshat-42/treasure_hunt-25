@@ -29,8 +29,10 @@ const teams = {
   team6: "p6",
   team7: "p7"
 };
+
 const round2Password = "georgesears";
-const round3Password = "the-truth-roll-no"; // This should be replaced with the actual roll number
+const round3Password = "the-truth-roll-no"; // TODO This should be replaced with the actual roll number
+
 //helper function
 function verify(username, password) {
   return teams[username] && teams[username] === password;
@@ -41,7 +43,7 @@ app.get("/", (req, res) => {
   res.send(`
     <html>
       <head>
-        <title>Access Denied</title>
+        <title>I MISS THE OLD KANYE</title>
         <style>
           body {
             background-color: black;
@@ -98,7 +100,7 @@ app.get("/test", (req, res) => {
   res.json({ message: "API request has been written successfully!" });
 });
 
-// Username Cookie send Route
+// Round 1 Username Cookie send Route
 app.post("/usernamePage", (req, res) => {
   const { username } = req.body;
   console.log("Received username:", username);
@@ -145,6 +147,7 @@ app.post("/round2Password", (req, res) => {
   }
 });
 
+// Round 3 Password Validation Route
 app.post("/round3Password", (req, res) => {
   const { password } = req.body;
   console.log("Received password for round 3:", password);
