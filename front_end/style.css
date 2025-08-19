@@ -490,6 +490,42 @@ input[type="range"]::-moz-range-thumb {
 .eliminated {
     animation: eliminated-flash 0.5s ease-out;
 }
+#sendRequest {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--color-pinkish-red);
+    color: var(--color-white);
+    border: none;
+    border-radius: 0.6rem;
+    font-size: 1rem;   /* smaller font */
+    font-weight: 500;  /* less bold */
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.25s ease-in-out;
+    box-shadow: 0 0 8px rgba(237, 27, 118, 0.6),
+                0 0 16px rgba(237, 27, 118, 0.4);
+}
+
+#sendRequest:hover {
+    background-color: #d1186a;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 12px rgba(237, 27, 118, 0.8),
+                0 0 22px rgba(237, 27, 118, 0.6);
+}
+
+#sendRequest:active {
+    transform: translateY(0) scale(0.96);
+    background-color: #a70f55;
+    box-shadow: 0 0 6px rgba(237, 27, 118, 0.5);
+}
+
+#sendRequest:disabled {
+    background-color: #5c050a;
+    color: #999;
+    cursor: not-allowed;
+    box-shadow: none;
+}
 
 @keyframes eliminated-flash {
     0% { box-shadow: 0 0 25px rgba(0, 168, 150, 0.3); }

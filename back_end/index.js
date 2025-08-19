@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({
   origin: "https://treasure-hunt-25-alpha.vercel.app",
   credentials: true,  // needed for cookies
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT",],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
@@ -43,7 +43,7 @@ app.get("/", (req, res) => {
   res.send(`
     <html>
       <head>
-        <title>I MISS THE OLD KANYE</title>
+        <title>U SUCK!!!!!!!</title>
         <style>
           body {
             background-color: black;
@@ -83,6 +83,7 @@ app.get("/", (req, res) => {
         <p class="blink">DA FUCK ARE U DOIN HERE EH?</p>
         <p>You really thought the password would just be lying around in the backend?</p>
         <p>Go solve the actual treasure hunt, hacker man.</p>
+        <p>scram scadaddle🤡🤡🤡</p>
         <p>HOES MADD</p>
         <pre>
   404: Secrets Not Found
