@@ -1,6 +1,6 @@
 // const e = require("express");
 
-const backend_port="https://treasure-hunt-25.onrender.com"
+const backend_port="https://treasure-hunt-25-6qa0.onrender.com"
 
 document.getElementById("sendRequest").addEventListener("click", sendHomepageRequest);
 async function sendHomepageRequest() {
