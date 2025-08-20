@@ -53,10 +53,7 @@ for (let y = 0; y < GRID_HEIGHT; y++) {
     }
     gridText += '\n';
 }
-for (const[k,e] of emojiCounts)
-    {
-        gp += String(e);
-    }
+gp = emojiCounts['🍕'];
 console.log(gp)
 gridElement.textContent = gridText;
 const messageBoxOverlay = document.querySelector('.message-box-overlay');
