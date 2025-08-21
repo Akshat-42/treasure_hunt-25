@@ -32,6 +32,7 @@ const teams = {
 
 const round2Password = "georgesears";
 const round3Password = "420"; // TODO This should be replaced with the actual roll number
+const CORRECT_TIMES = ['03:45', '09:15', '06:00', '12:30', '07:55'];
 
 //helper function
 function verify(username, password) {
@@ -159,6 +160,16 @@ app.post("/round3Password", (req, res) => {
     res.status(401).json({ message: "Invalid password" });
   }
 });
+
+
+app.post("/submit_time", (req, res) => {
+  const { time } = req.body;
+  console.log("Received time submission:", time);
+  // Here you would handle the time submission logic
+  res.json({ message: "Time submitted successfully!" });
+});
+
+
 
 // start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -113,7 +113,14 @@ function showMessage(text, isError = false) {
 function handleSubmission() {
     if (state.isLocked) return;
     const formattedTime = String(state.hour).padStart(2, '0') + ':' + String(state.minute).padStart(2, '0');
-
+    // console.log("Submitted time:", formattedTime);
+    const response = fetch(backend_port+"/submit_time", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ time: formattedTime })
+    });
     if (formattedTime === CORRECT_TIMES[state.lightsOn]) {
         const indicatorElement = dom.lights[state.lightsOn];
         // Alternate indicator colors
