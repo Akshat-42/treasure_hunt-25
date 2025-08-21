@@ -7,10 +7,10 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
+const origin = "https://treasure-hunt-25.vercel.app";
 //CORS for local frontend
 app.use(cors({
-  origin: "https://treasure-hunt-25-alpha.vercel.app",
+  origin: origin,
   credentials: true,  // needed for cookies
   methods: ["GET", "POST", "PUT",],
   allowedHeaders: ["Content-Type", "Authorization"]
