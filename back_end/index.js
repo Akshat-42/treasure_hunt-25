@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 const origin = "https://treasure-hunt-25.vercel.app";
 //CORS for local frontend
 app.use(cors({
