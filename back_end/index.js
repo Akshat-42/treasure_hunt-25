@@ -158,18 +158,20 @@ app.post("/round2Password", (req, res) => {
   if (password === round2Password) {
     res.json({ message: "Password is valid!" });
   }
+
 });
 
 // Round 3 Password Validation Route
 app.post("/round3Password", (req, res) => {
   const { password } = req.body;
-  console.log("Received password for round 3:", password);
+  console.log("Password for Round 3:", password);
 
   if (password === round3Password) {
     res.json({ message: "Password is valid!" });
   } else {
     res.status(401).json({ message: "Invalid password" });
   }
+
 });
 
 
@@ -179,7 +181,6 @@ app.post("/submit_time", (req, res) => {
   // Here you would handle the time submission logic
   res.json({ message: "Time submitted successfully!" });
 });
-
 
 
 // start server

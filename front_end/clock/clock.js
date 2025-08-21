@@ -128,6 +128,12 @@ function handleSubmission() {
         indicatorElement.classList.add(colorClass);
 
         state.lightsOn++;
+        if (state.lightsOn==5){
+            console.log(
+                `All lights are on!`
+            )
+        }
+        console.log("Lights On:", state.lightsOn, "Current Time:", formattedTime);
         if (state.lightsOn === CORRECT_TIMES.length) {
             // Player wins
             showMessage("SEQUENCE ACCEPTED", false);
