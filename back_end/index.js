@@ -6,16 +6,27 @@ const jwt = require("jsonwebtoken");
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
-//CORS for local frontend
+const allowedOrigins = [
+  "https://treasure-hunt-25-alpha.vercel.app",
+  "http://localhost:3000",
+  "https://treasure-hunt-25.vercel.app"
+];
+
 app.use(cors({
-  origin: "https://treasure-hunt-25-alpha.vercel.app",
-  credentials: true,  // needed for cookies
-  methods: ["GET", "POST", "PUT",],
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
-
 app.use(express.json());
 app.use(cookieParser());
 
