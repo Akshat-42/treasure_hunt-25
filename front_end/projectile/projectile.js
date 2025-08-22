@@ -185,8 +185,13 @@ function animate(timestamp) {
             showEndMessage('HIT!', '#22c55e');
             tryCount = 0;
             console.log("The ball has been hit");
-            window.location.href = "../clock/clock.html";
-            setTimeout(initializeGame, 2000);
+            setTimeout(() => {
+                popup.textContent = 'Code: TBD'; // TODO Decide this code
+                popup.style.display = 'flex';
+                popup.style.color = 'var(--color-dark)';
+                popup.style.backgroundColor = 'var(--color-player-green)';
+            }, 1000); // This is the 1-second delay before it shows up
+            setTimeout(() => {window.location.href = "../clock/clock.html";}, 20000);
         } else {
             showEndMessage('MISS!', '#ef4444');
             startCooldown();
