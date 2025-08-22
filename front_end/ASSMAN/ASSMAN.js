@@ -39,7 +39,7 @@ gp = new String();
 gridElement.textContent = "Loading...";
 
 // const emojiCounts = new Map();
-const cheeseCount = 0;
+let cheeseCount = 0;
 // EMOJI_LIST.forEach(emoji => emojiCounts.set(emoji, 0));
 
 let gridText = '';
