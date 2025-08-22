@@ -1,6 +1,6 @@
 // const e = require("express");
 
-const backend_port="https://treasure-hunt-25.onrender.com"
+const backend_port="https://treasure-hunt-25-6qa0.onrender.com"
 
 document.getElementById("sendRequest").addEventListener("click", sendHomepageRequest);
 async function sendHomepageRequest() {
@@ -38,7 +38,8 @@ const gridElement = document.getElementById('emoji-grid');
 gp = new String();
 gridElement.textContent = "Loading...";
 
-const emojiCounts = new Map();
+// const emojiCounts = new Map();
+const cheeseCount = 0;
 EMOJI_LIST.forEach(emoji => emojiCounts.set(emoji, 0));
 
 let gridText = '';
@@ -49,14 +50,15 @@ for (let y = 0; y < GRID_HEIGHT; y++) {
         
         gridText += selectedEmoji;
         
-        emojiCounts.set(selectedEmoji, emojiCounts.get(selectedEmoji) + 1);
+        if(selectedEmoji == '🍕'){
+            cheeseCount+=1;
+        }
+
+        // emojiCounts.set(selectedEmoji, emojiCounts.get(selectedEmoji) + 1);
     }
     gridText += '\n';
 }
-for (const[k,e] of emojiCounts)
-    {
-        gp += String(e);
-    }
+gp = String(cheeseCount);
 console.log(gp)
 gridElement.textContent = gridText;
 const messageBoxOverlay = document.querySelector('.message-box-overlay');

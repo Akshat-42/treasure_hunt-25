@@ -1,4 +1,4 @@
-const backend_port="https://treasure-hunt-25.onrender.com"
+const backend_port="https://treasure-hunt-25-6qa0.onrender.com"
 
 document.getElementById('show-roll-number-prompt').addEventListener('click', () => {
     document.getElementById('roll-no-prompt-overlay').classList.add('visible');

@@ -109,11 +109,11 @@ function showMessage(text, isError = false) {
 /**
  * Handles the logic when the user clicks the "SUBMIT" button.
  */
-function handleSubmission() {
+async function handleSubmission() {
     if (state.isLocked) return;
     const formattedTime = String(state.hour).padStart(2, '0') + ':' + String(state.minute).padStart(2, '0');
     // console.log("Submitted time:", formattedTime);
-    const response = fetch(backend_port+"/submit_time", {
+    const response = await fetch(backend_port+"/submit_time", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
