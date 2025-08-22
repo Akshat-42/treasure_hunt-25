@@ -176,10 +176,13 @@ app.post("/round3Password", (req, res) => {
 
 
 app.post("/submit_time", (req, res) => {
-  const { time } = req.body;
-  console.log("Received time submission:", time);
-  // Here you would handle the time submission logic
-  res.json({ message: "Time submitted successfully!" });
+  const { time, lightsOn } = req.body;
+  console.log("Received time submission:", time, "Lights On:", lightsOn);
+  if (time === CORRECT_TIMES[lightsOn]) {
+    res.json({ message: "Time submitted successfully!" });
+  } else {
+    res.status(400).json({ message: "Incorrect time submission." });
+  } 
 });
 
 
