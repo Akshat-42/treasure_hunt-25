@@ -38,7 +38,8 @@ const gridElement = document.getElementById('emoji-grid');
 gp = new String();
 gridElement.textContent = "Loading...";
 
-const emojiCounts = new Map();
+// const emojiCounts = new Map();
+const cheeseCount = 0;
 EMOJI_LIST.forEach(emoji => emojiCounts.set(emoji, 0));
 
 let gridText = '';
@@ -49,11 +50,15 @@ for (let y = 0; y < GRID_HEIGHT; y++) {
         
         gridText += selectedEmoji;
         
-        emojiCounts.set(selectedEmoji, emojiCounts.get(selectedEmoji) + 1);
+        if(selectedEmoji == '🍕'){
+            cheeseCount+=1;
+        }
+
+        // emojiCounts.set(selectedEmoji, emojiCounts.get(selectedEmoji) + 1);
     }
     gridText += '\n';
 }
-gp = String(emojiCounts.get('🍕'));
+gp = String(cheeseCount);
 console.log(gp)
 gridElement.textContent = gridText;
 const messageBoxOverlay = document.querySelector('.message-box-overlay');
