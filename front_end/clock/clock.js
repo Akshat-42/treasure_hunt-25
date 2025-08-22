@@ -37,7 +37,6 @@ const dom = {
 };
 
 // Game Constants and State
-const CORRECT_TIMES = ['03:45', '09:15', '06:00', '12:30', '07:55'];
 let state = {
     lightsOn: 0,
     isLocked: false,
@@ -110,18 +109,31 @@ function showMessage(text, isError = false) {
 /**
  * Handles the logic when the user clicks the "SUBMIT" button.
  */
-function handleSubmission() {
+async function handleSubmission() {
     if (state.isLocked) return;
     const formattedTime = String(state.hour).padStart(2, '0') + ':' + String(state.minute).padStart(2, '0');
-
-    if (formattedTime === CORRECT_TIMES[state.lightsOn]) {
+    // console.log("Submitted time:", formattedTime);
+    const response = await fetch(backend_port+"/submit_time", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ time: formattedTime , lightsOn: state.lightsOn })
+    });
+    if (response.ok) {
         const indicatorElement = dom.lights[state.lightsOn];
         // Alternate indicator colors
         const colorClass = state.lightsOn % 2 === 0 ? 'indicator-on-teal' : 'indicator-on-pink';
         indicatorElement.classList.add(colorClass);
 
         state.lightsOn++;
-        if (state.lightsOn === CORRECT_TIMES.length) {
+        if (state.lightsOn==5){
+            console.log(
+                `All lights are on!`
+            )
+        }
+        console.log("Lights On:", state.lightsOn, "Current Time:", formattedTime);
+        if (state.lightsOn === 5) {
             // Player wins
             showMessage("SEQUENCE ACCEPTED", false);
             state.isLocked = true;

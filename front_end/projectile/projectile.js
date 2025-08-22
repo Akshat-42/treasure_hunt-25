@@ -184,6 +184,8 @@ function animate(timestamp) {
         if (isHit) {
             showEndMessage('HIT!', '#22c55e');
             tryCount = 0;
+            console.log("The ball has been hit");
+            window.location.href = "../clock/clock.html";
             setTimeout(initializeGame, 2000);
         } else {
             showEndMessage('MISS!', '#ef4444');

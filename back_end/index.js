@@ -6,16 +6,27 @@ const jwt = require("jsonwebtoken");
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
-//CORS for local frontend
+const allowedOrigins = [
+  "https://treasure-hunt-25-alpha.vercel.app",
+  "http://localhost:3000",
+  "https://treasure-hunt-25.vercel.app"
+];
+
 app.use(cors({
-  origin: "https://treasure-hunt-25-alpha.vercel.app",
-  credentials: true,  // needed for cookies
-  methods: ["GET", "POST", "PUT",],
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
-
 app.use(express.json());
 app.use(cookieParser());
 
@@ -32,6 +43,7 @@ const teams = {
 
 const round2Password = "georgesears";
 const round3Password = "420"; // TODO This should be replaced with the actual roll number
+const CORRECT_TIMES = ['03:45', '09:15', '06:00', '12:30', '07:55'];
 
 //helper function
 function verify(username, password) {
@@ -146,19 +158,33 @@ app.post("/round2Password", (req, res) => {
   if (password === round2Password) {
     res.json({ message: "Password is valid!" });
   }
+
 });
 
 // Round 3 Password Validation Route
 app.post("/round3Password", (req, res) => {
   const { password } = req.body;
-  console.log("Received password for round 3:", password);
+  console.log("Password for Round 3:", password);
 
   if (password === round3Password) {
     res.json({ message: "Password is valid!" });
   } else {
     res.status(401).json({ message: "Invalid password" });
   }
+
 });
+
+
+app.post("/submit_time", (req, res) => {
+  const { time, lightsOn } = req.body;
+  console.log("Received time submission:", time, "Lights On:", lightsOn);
+  if (time === CORRECT_TIMES[lightsOn]) {
+    res.json({ message: "Time submitted successfully!" });
+  } else {
+    res.status(400).json({ message: "Incorrect time submission." });
+  } 
+});
+
 
 // start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
