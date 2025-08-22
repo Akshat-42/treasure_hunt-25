@@ -39,7 +39,7 @@ gp = new String();
 gridElement.textContent = "Loading...";
 
 // const emojiCounts = new Map();
-let cheeseCount = 0;
+let pizza = 0;
 // EMOJI_LIST.forEach(emoji => emojiCounts.set(emoji, 0));
 
 let gridText = '';
@@ -51,14 +51,14 @@ for (let y = 0; y < GRID_HEIGHT; y++) {
         gridText += selectedEmoji;
         
         if(selectedEmoji == '🍕'){
-            cheeseCount+=1;
+            pizza+=1;
         }
 
         // emojiCounts.set(selectedEmoji, emojiCounts.get(selectedEmoji) + 1);
     }
     gridText += '\n';
 }
-gp = String(cheeseCount);
+gp = String(pizza);
 console.log(gp)
 gridElement.textContent = gridText;
 const messageBoxOverlay = document.querySelector('.message-box-overlay');
