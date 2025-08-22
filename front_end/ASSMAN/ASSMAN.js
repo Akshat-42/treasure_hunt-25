@@ -40,7 +40,7 @@ gridElement.textContent = "Loading...";
 
 // const emojiCounts = new Map();
 const cheeseCount = 0;
-EMOJI_LIST.forEach(emoji => emojiCounts.set(emoji, 0));
+// EMOJI_LIST.forEach(emoji => emojiCounts.set(emoji, 0));
 
 let gridText = '';
 for (let y = 0; y < GRID_HEIGHT; y++) {
