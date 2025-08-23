@@ -10,6 +10,7 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-image: url(https://media1.tenor.com/m/_owqBpbuUUMAAAAd/dancing-dog.gif);
     background-size: 176px 190px;
+    background-position: center;
     color: var(--color-light-grey);
     margin: 0;
     padding: 0;
