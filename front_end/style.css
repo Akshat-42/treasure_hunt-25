@@ -176,6 +176,10 @@ input:focus {
     visibility: visible;
     opacity: 1;
 }
+.message-box-overlay.visible .message-box {
+    transform: scale(1);
+    opacity: 1;
+}
 
 .message-box {
     background-color: #262626;
