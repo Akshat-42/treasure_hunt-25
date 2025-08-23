@@ -42,8 +42,8 @@ const teams = {
 };
 
 const round2Password = "georgesears";
-const round3Password = "420"; // TODO This should be replaced with the actual roll number
-const CORRECT_TIMES = ['03:45', '09:15', '06:00', '12:30', '07:55'];
+const round3Password = "Ilovemyseniors";
+const CORRECT_TIMES = ['05:17', '05:13', '02:20', '05:23', '10:30'];
 
 //helper function
 function verify(username, password) {
@@ -138,7 +138,7 @@ app.post("/usernamePage", (req, res) => {
 app.post("/verifyPassword", (req, res) => {
   const { username, password } = req.body;
   console.log("Received username and password:", username, password);
-
+  username = username.toLowerCase();
   if (!teams[username]) {
     return res.status(404).json({ message: "Team not found" });
   }
