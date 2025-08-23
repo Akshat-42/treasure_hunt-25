@@ -186,7 +186,7 @@ function animate(timestamp) {
         const isHit = ball.x > target.x && ball.x < target.x + target.width;
 
         if (isHit) {
-            showMessageBox('HIT!\nCode: M3$$ F00D i$ TH3 B#$T');
+            showMessageBox('HIT! \n Code: M3$$ F00D i$ TH3 B#$T');
             tryCount = 0;
             console.log("The ball has been hit");
             // setTimeout(() => {
@@ -215,8 +215,8 @@ function showMessageBox(message) {
 }
 
 window.closeMessageBox = function() {
-    messageBoxOverlay.classList.remove('visible');
     window.location.href = "../clock/clock.html";
+    messageBoxOverlay.classList.remove('visible');
 };
 
 
