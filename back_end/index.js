@@ -138,12 +138,11 @@ app.post("/usernamePage", (req, res) => {
 app.post("/verifyPassword", (req, res) => {
   const { username, password } = req.body;
   console.log("Received username and password:", username, password);
-  const new_username = username.toLowerCase();
-  if (!teams[new_username]) {
+  if (!teams[username]) {
     return res.status(404).json({ message: "Team not found" });
   }
 
-  if (verify(new_username, password)) {
+  if (verify(username, password)) {
     res.json({ message: "Password is valid!" });
   } else {
     res.status(401).json({ message: "Invalid password" });
