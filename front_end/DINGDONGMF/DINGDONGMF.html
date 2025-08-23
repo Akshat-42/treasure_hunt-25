@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Hunt-'25 - Round 3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .container {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <button id="sendRequest">I Miss the OLD KANYE</button>
+
+        <div class="shape-container">
+            <!-- Triangle -->
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="50,10 90,90 10,90" fill="var(--color-player-green)" />
+            </svg>
+            <!-- Circle -->
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="40" fill="var(--color-player-green)" />
+            </svg>
+            <!-- Square -->
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="10" width="80" height="80" fill="var(--color-player-green)" />
+            </svg>
+        </div>
+        
+        <h1 class="title">Round 3</h1>
+        <p>A Public Notice</p>
+        <div class="card">
+            <p class="riddle">
+                Where voices of the campus often reside, and daily messages can't hide.<br>
+                A silent train waits, its time displayed, with a string of numbers, a code is made.
+            </p>
+            <a href="gfjhsdjkgkdgdjhgfksdhgfjdg.py" download class="download-link">GeT ShIT</a>
+        </div>
+
+        <button id="show-roll-number-prompt" class="button bottom-right-button">Answer this</button>
+    </div>
+
+    <!-- New overlay for the roll number prompt -->
+    <div id="roll-no-prompt-overlay" class="roll-no-prompt-overlay">
+        <div class="roll-no-prompt-box">
+            <h2 class="title" style="font-size: 1.5rem; margin-bottom: 1rem;">Code Word?</h2>
+            <form onsubmit="handleRollNoSubmit(event)">
+                <div class="input-group">
+                    <input type="text" id="roll-no-input" placeholder="Enter roll number">
+                </div>
+                <button type="submit" class="button" id="roll-no-submit">Submit</button>
+            </form>
+            <button class="button" onclick="closeRollNoPrompt()" style="margin-top: 1rem;">Cancel</button>
+        </div>
+    </div>
+
+    <script src="round3.js"></script>
+</body>
+</html>

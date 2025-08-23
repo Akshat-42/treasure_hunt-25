@@ -1,0 +1,9 @@
+kfghslnvhfgnnhgjhnddghnvgnbnhgfgjdjhgddfjdkdkgvghfkjgvvndfjvnhnhjnjdfjvhjvnhndvbgfvvvdfjvjhjgfhhvfvfvgfvgfvgfnjgfhjffvgfvnjgfvnhjf=input
+gtthjgnjdfkjidikikdikkdijdkifh=range
+joinvaaniyousobs=ord
+macinshit=2
+fhyfjigfhyjhbyfgkdjdgfkldfhghbrj = kfghslnvhfgnnhgjhnddghnvgnbnhgfgjdjhgddfjdkdkgvghfkjvvndfjvnhnhjnjdfjvhjvnhndvbgfvvvdfjvjhjgfhhvfvfvgfvgfvgfnjgfhjffvgfvnjgfvnhjf()
+cometocluborientatioonorugay = ''
+for singyoufools in gtthjgnjdfkjidikikdikkdijdkifh(0,len(fhyfjigfhyjhbyfgkdjdgfkldfhghbrj),macinshit):
+    cometocluborientatioonorugay+=chr(int((joinvaaniyousobs(fhyfjigfhyjhbyfgkdjdgfkldfhghbrj[singyoufools])*joinvaaniyousobs(fhyfjigfhyjhbyfgkdjdgfkldfhghbrj[singyoufools+macinshit//2]))**(macinshit/4)))
+print(cometocluborientatioonorugay)
