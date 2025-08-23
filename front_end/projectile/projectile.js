@@ -186,7 +186,7 @@ function animate(timestamp) {
         const isHit = ball.x > target.x && ball.x < target.x + target.width;
 
         if (isHit) {
-            showMessageBox('HIT!');
+            showMessageBox('HIT!\nCode: Me=3$$ F00D i$ TH3 B#$T');
             tryCount = 0;
             console.log("The ball has been hit");
             // setTimeout(() => {
