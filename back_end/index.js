@@ -32,13 +32,13 @@ app.use(cookieParser());
 
 //team credentials (object: username → password)
 const teams = {
-  team1: "p1",
-  team2: "p2",
-  team3: "p3",
-  team4: "p4",
-  team5: "p5",
-  team6: "p6",
-  team7: "p7"
+  onikuma  : "yeet",
+  roc      : "simp",
+  wendigo  : "vibe",
+  obeah    : "goat",
+  strix    : "chad",
+  minotaur : "slay",
+  manticore: "sike"
 };
 
 const round2Password = "georgesears";
@@ -177,7 +177,7 @@ app.post("/round3Password", (req, res) => {
 
 app.post("/submit_time", (req, res) => {
   const { time, lightsOn } = req.body;
-  console.log("Received time submission:", time, "Lights On:", lightsOn);
+  console.log("Received time submission:", time, "Current Lights On:", lightsOn);
   if (time === CORRECT_TIMES[lightsOn]) {
     res.json({ message: "Time submitted successfully!" });
   } else {
