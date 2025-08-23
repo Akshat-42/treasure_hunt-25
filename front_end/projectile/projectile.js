@@ -34,6 +34,7 @@ const velocityValueSpan = document.getElementById('velocityValue');
 const angleValueSpan = document.getElementById('angleValue');
 const launchButton = document.getElementById('launchButton');
 const statusText = document.getElementById('statusText');
+const popup = document.getElementById('popup');
 
 // --- Game Configuration ---
 const GRAVITY = 9.8; // m/s^2
