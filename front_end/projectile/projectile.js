@@ -189,21 +189,12 @@ function animate(timestamp) {
             showMessageBox('HIT!');
             tryCount = 0;
             console.log("The ball has been hit");
-<<<<<<< HEAD
             // setTimeout(() => {
-            //     popup.textContent = 'Code: TBD'; // TODO Decide this code
+            //     popup.textContent = 'Code: Me=3$$ F00D i$ TH3 B#$T'; // TODO Decide this code
             //     popup.style.display = 'flex';
             //     popup.style.color = 'var(--color-dark)';
             //     popup.style.backgroundColor = 'var(--color-player-green)';
             // }, 1000); // This is the 1-second delay before it shows up
-=======
-            setTimeout(() => {
-                popup.textContent = 'Code: M3$$ F00D 1$ TH3 B3$T';
-                popup.style.display = 'flex';
-                popup.style.color = 'var(--color-dark)';
-                popup.style.backgroundColor = 'var(--color-player-green)';
-            }, 1000); // This is the 1-second delay before it shows up
->>>>>>> 53901cd797c5abb113e02b08b217ff8787aac0df
             setTimeout(() => {window.location.href = "../clock/clock.html";}, 20000);
         } else {
             showEndMessage('MISS!', '#ef4444');
