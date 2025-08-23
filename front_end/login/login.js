@@ -91,7 +91,7 @@ async function handlePasswordSubmit(event) {
           if (response.ok) {
             showPopup("Correct password", true);
             console.log("Password verified. Redirecting...");
-            await (window.location.href = "../round2/round2.html");
+            await (window.location.href = "/MEPMOPMF/MEPMOPMF.html");
           } else {
             showPopup("Incorrect password. Try again!", false);
             console.log(data.message || "Incorrect password. Try again!");
