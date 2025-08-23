@@ -186,7 +186,7 @@ function animate(timestamp) {
         const isHit = ball.x > target.x && ball.x < target.x + target.width;
 
         if (isHit) {
-            showMessageBox('HIT!\nCode: Me=3$$ F00D i$ TH3 B#$T');
+            showMessageBox('HIT!\nCode: M3$$ F00D i$ TH3 B#$T');
             tryCount = 0;
             console.log("The ball has been hit");
             // setTimeout(() => {
@@ -195,7 +195,6 @@ function animate(timestamp) {
             //     popup.style.color = 'var(--color-dark)';
             //     popup.style.backgroundColor = 'var(--color-player-green)';
             // }, 1000); // This is the 1-second delay before it shows up
-            setTimeout(() => {window.location.href = "../clock/clock.html";}, 20000);
         } else {
             showEndMessage('MISS!', '#ef4444');
             startCooldown();
@@ -217,6 +216,7 @@ function showMessageBox(message) {
 
 window.closeMessageBox = function() {
     messageBoxOverlay.classList.remove('visible');
+    window.location.href = "../clock/clock.html";
 };
 
 

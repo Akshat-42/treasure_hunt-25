@@ -210,3 +210,14 @@ body {
             top: -50px; /* Hidden off-screen */
             left: -50px;
         }
+
+        .message-box {
+            margin-top: 5%; /* 24px */
+            text-align: center;
+            height: 1.5rem; /* 24px */
+            font-weight: 700;
+            font-size: 1.125rem; /* 18px */
+            opacity: 0;
+            transform: translateY(0.5rem);
+            transition: opacity 0.5s, transform 0.5s;
+        }
