@@ -194,6 +194,7 @@ input:focus {
 .message-box-text {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 .shape-container {
@@ -229,7 +230,9 @@ input:focus {
 #emoji-container {
     overflow-x: auto;
 }
-
+/*-------------------------------------------------------------------------------------------------*/
+/*----------------------------------------Projectile stuff-----------------------------------------*/
+/*-------------------------------------------------------------------------------------------------*/
 /* --- Canvas & Status Text --- */
 .canvas-container {
     position: relative;

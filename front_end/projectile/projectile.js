@@ -37,7 +37,7 @@ const statusText = document.getElementById('statusText');
 const popup = document.getElementById('popup');
 
 // --- Game Configuration ---
-const GRAVITY = 9.8; // m/s^2
+const GRAVITY = 1.62; // m/s^2
 const PIXELS_PER_METER = 5; // Scale for drawing
 const BALL_RADIUS = 8; // in pixels
 const TARGET_WIDTH = 24;
