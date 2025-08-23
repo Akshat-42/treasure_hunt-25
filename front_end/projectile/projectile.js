@@ -36,6 +36,9 @@ const launchButton = document.getElementById('launchButton');
 const statusText = document.getElementById('statusText');
 const popup = document.getElementById('popup');
 
+const messageBoxOverlay = document.querySelector('.message-box-overlay');
+const messageBoxText = document.querySelector('.message-box-text');
+
 // --- Game Configuration ---
 const GRAVITY = 1.62; // m/s^2
 const PIXELS_PER_METER = 5; // Scale for drawing
@@ -183,15 +186,15 @@ function animate(timestamp) {
         const isHit = ball.x > target.x && ball.x < target.x + target.width;
 
         if (isHit) {
-            showEndMessage('HIT!', '#22c55e');
+            showMessageBox('HIT!');
             tryCount = 0;
             console.log("The ball has been hit");
-            setTimeout(() => {
-                popup.textContent = 'Code: TBD'; // TODO Decide this code
-                popup.style.display = 'flex';
-                popup.style.color = 'var(--color-dark)';
-                popup.style.backgroundColor = 'var(--color-player-green)';
-            }, 1000); // This is the 1-second delay before it shows up
+            // setTimeout(() => {
+            //     popup.textContent = 'Code: TBD'; // TODO Decide this code
+            //     popup.style.display = 'flex';
+            //     popup.style.color = 'var(--color-dark)';
+            //     popup.style.backgroundColor = 'var(--color-player-green)';
+            // }, 1000); // This is the 1-second delay before it shows up
             setTimeout(() => {window.location.href = "../clock/clock.html";}, 20000);
         } else {
             showEndMessage('MISS!', '#ef4444');
@@ -206,6 +209,16 @@ function animate(timestamp) {
 
     animationFrameId = requestAnimationFrame(animate);
 }
+
+function showMessageBox(message) {
+    messageBoxText.textContent = message;
+    messageBoxOverlay.classList.add('visible');
+}
+
+window.closeMessageBox = function() {
+    messageBoxOverlay.classList.remove('visible');
+};
+
 
 function showEndMessage(text, color) {
     statusText.textContent = text;
