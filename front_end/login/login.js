@@ -30,7 +30,7 @@ async function sendHomepageRequest() {
 async function handleUsernameSubmit(event) {
   event.preventDefault();
 
-  const teamId = document.getElementById("teamId").value.trim();
+  const teamId = document.getElementById("teamId").value.trim().toLowerCase();
 
   if (!teamId) {
     console.log("Please enter your Team ID.");
