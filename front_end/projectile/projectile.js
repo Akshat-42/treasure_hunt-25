@@ -187,7 +187,7 @@ function animate(timestamp) {
             tryCount = 0;
             console.log("The ball has been hit");
             setTimeout(() => {
-                popup.textContent = 'Code: TBD'; // TODO Decide this code
+                popup.textContent = 'Code: M3$$ F00D 1$ TH3 B3$T';
                 popup.style.display = 'flex';
                 popup.style.color = 'var(--color-dark)';
                 popup.style.backgroundColor = 'var(--color-player-green)';
