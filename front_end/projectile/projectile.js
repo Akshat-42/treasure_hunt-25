@@ -127,7 +127,7 @@ function initializeGame() {
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = '#00b894';
+    ctx.fillStyle = '#c4c4c4ff';
     ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
     
     target.draw();
@@ -136,7 +136,7 @@ function draw() {
     if (ball && target) {
         const distanceInPixels = target.x + (TARGET_WIDTH / 2) - ball.startX;
         const distanceInMeters = (distanceInPixels / PIXELS_PER_METER).toFixed(1);
-        ctx.fillStyle = '#ed1b76';
+        ctx.fillStyle = '#ed1b1b87';
         ctx.font = 'bold 16px Inter';
         ctx.textAlign = 'center';
         ctx.fillText(`Distance: ${distanceInMeters} m`, canvas.width / 2, canvas.height - 300);
