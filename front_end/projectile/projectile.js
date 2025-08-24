@@ -43,7 +43,7 @@ const messageBoxText = document.querySelector('.message-box-text');
 const GRAVITY = 1.62; // m/s^2
 const PIXELS_PER_METER = 5; // Scale for drawing
 const BALL_RADIUS = 8; // in pixels
-const TARGET_WIDTH = 24;
+const TARGET_WIDTH = 30;
 const TARGET_HEIGHT = 20; // in pixels (height of the ground)
 const COOLDOWN_BASE = 7000; // 7 second base cooldown
 const COOLDOWN_FACTOR = 2.5; // Exponential factor
@@ -186,7 +186,7 @@ function animate(timestamp) {
         const isHit = ball.x > target.x && ball.x < target.x + target.width;
 
         if (isHit) {
-            showMessageBox('HIT!');
+            showMessageBox('HIT! \n Code: M3$$ F00D i$ TH3 B#$T');
             tryCount = 0;
             console.log("The ball has been hit");
             // setTimeout(() => {
@@ -195,7 +195,6 @@ function animate(timestamp) {
             //     popup.style.color = 'var(--color-dark)';
             //     popup.style.backgroundColor = 'var(--color-player-green)';
             // }, 1000); // This is the 1-second delay before it shows up
-            setTimeout(() => {window.location.href = "../clock/clock.html";}, 20000);
         } else {
             showEndMessage('MISS!', '#ef4444');
             startCooldown();
@@ -216,6 +215,7 @@ function showMessageBox(message) {
 }
 
 window.closeMessageBox = function() {
+    window.location.href = "../clock/clock.html";
     messageBoxOverlay.classList.remove('visible');
 };
 

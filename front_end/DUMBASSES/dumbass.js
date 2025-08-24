@@ -27,7 +27,7 @@ const messageBoxText = document.querySelector('.message-box-text');
 async function back_to_r2(event)
 {
     console.log('Correct! You have solved the puzzle.');
-    window.location.href = '../round2/round2.html';
+    window.location.href = '../MEPMOPMF/MEPMOPMF.html';
 }
 function showMessageBox(message) {
     messageBoxText.textContent = message;
